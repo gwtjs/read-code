@@ -23,11 +23,12 @@ module.exports = {
           ]
     },
     resolve: { extensions: ["*", ".js", ".jsx"] },
-    devServer: {
-        // contentBase: path.join(__dirname, "./"),
-        // port: 3000,
-        // publicPath: "http://localhost:3000/",
-        hotOnly: true
-    },
-    plugins: [new webpack.HotModuleReplacementPlugin()]
+    devtool:false
+    // devServer: {
+    //     // contentBase: path.join(__dirname, "./"),
+    //     // port: 3000,
+    //     // publicPath: "http://localhost:3000/",
+    //     hotOnly: true
+    // },
+    // plugins: [new webpack.HotModuleReplacementPlugin()]
 }

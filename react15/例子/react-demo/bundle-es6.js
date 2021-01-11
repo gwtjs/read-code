@@ -6,102 +6,59 @@
 /*!*****************!*\
   !*** ./App.jsx ***!
   \*****************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: __webpack_exports__, module.loaded, module.id, module, __webpack_require__.nmd, __webpack_require__, __webpack_require__.* */
-/***/ ((module, exports, __webpack_require__) => {
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_exports__, module.loaded, module.id, module, __webpack_require__.hmd, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-/* module decorator */ module = __webpack_require__.nmd(module);
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js");
+/* harmony import */ var _PageA__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PageA */ "./PageA.jsx");
+/* harmony import */ var _PageB__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PageB */ "./PageB.jsx");
+/* module decorator */ module = __webpack_require__.hmd(module);
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.default = void 0;
 
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/react.js"));
 
-var _reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js");
-
-var _PageA = _interopRequireDefault(__webpack_require__(/*! ./PageA */ "./PageA.jsx"));
-
-var _PageB = _interopRequireDefault(__webpack_require__(/*! ./PageB */ "./PageB.jsx"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var App = /*#__PURE__*/function (_React$Component) {
-  _inherits(App, _React$Component);
-
-  var _super = _createSuper(App);
-
-  function App(props) {
-    var _this;
-
-    _classCallCheck(this, App);
-
-    _this = _super.call(this, props);
-    _this.state = {
+class App extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  constructor(props) {
+    super(props);
+    this.state = {
       color: 'red'
     };
-    _this.setColor = _this.setColor.bind(_assertThisInitialized(_this));
-    return _this;
+    this.setColor = this.setColor.bind(this);
   }
 
-  _createClass(App, [{
-    key: "setColor",
-    value: function setColor(color) {
-      this.setState({
-        color: color
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var color = this.state.color;
-      return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", {
-        style: {
-          color: color
-        }
-      }, "app"), /*#__PURE__*/_react["default"].createElement(_PageA["default"], {
-        color: color,
-        setColor: this.setColor
-      }), /*#__PURE__*/_react["default"].createElement(_PageB["default"], {
-        color: color
-      }));
-    }
-  }]);
+  setColor(color) {
+    this.setState({
+      color
+    });
+  }
 
-  return App;
-}(_react["default"].Component);
+  render() {
+    const color = this.state.color;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+      style: {
+        color
+      }
+    }, "app"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_PageA__WEBPACK_IMPORTED_MODULE_1__.default, {
+      color: color,
+      setColor: this.setColor
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_PageB__WEBPACK_IMPORTED_MODULE_2__.default, {
+      color: color
+    }));
+  }
 
-var _default =  true ? (0, _reactHotLoader.hot)(module)(App) : 0;
+}
 
-exports.default = _default;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ( true ? (0,react_hot_loader__WEBPACK_IMPORTED_MODULE_3__.hot)(module)(App) : 0);
 
 /***/ }),
 
@@ -109,83 +66,41 @@ exports.default = _default;
 /*!*******************!*\
   !*** ./PageA.jsx ***!
   \*******************/
-/*! flagged exports */
-/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
+/*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_exports__, __webpack_require__ */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ PageA
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/react.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var PageA = /*#__PURE__*/function (_React$Component) {
-  _inherits(PageA, _React$Component);
-
-  var _super = _createSuper(PageA);
-
-  function PageA() {
-    _classCallCheck(this, PageA);
-
-    return _super.apply(this, arguments);
+class PageA extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  render() {
+    const {
+      color,
+      setColor
+    } = this.props;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      style: {
+        color
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "pageA"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      onClick: () => {
+        setColor('red');
+      }
+    }, "\u7EA2\u8272"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      onClick: () => {
+        setColor('black');
+      }
+    }, "\u9ED1\u8272"));
   }
 
-  _createClass(PageA, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          color = _this$props.color,
-          setColor = _this$props.setColor;
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          color: color
-        }
-      }, /*#__PURE__*/_react["default"].createElement("h2", null, "pageA"), /*#__PURE__*/_react["default"].createElement("button", {
-        onClick: function onClick() {
-          setColor('red');
-        }
-      }, "\u7EA2\u8272"), /*#__PURE__*/_react["default"].createElement("button", {
-        onClick: function onClick() {
-          setColor('black');
-        }
-      }, "\u9ED1\u8272"));
-    }
-  }]);
-
-  return PageA;
-}(_react["default"].Component);
-
-exports.default = PageA;
+}
 
 /***/ }),
 
@@ -193,100 +108,77 @@ exports.default = PageA;
 /*!*******************!*\
   !*** ./PageB.jsx ***!
   \*******************/
-/*! flagged exports */
-/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
+/*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_exports__, __webpack_require__ */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ PageB
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/react.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var PageB = /*#__PURE__*/function (_React$Component) {
-  _inherits(PageB, _React$Component);
-
-  var _super = _createSuper(PageB);
-
-  function PageB(props) {
-    var _this;
-
-    _classCallCheck(this, PageB);
-
-    _this = _super.call(this, props);
-    _this.state = {
+class PageB extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  constructor(props) {
+    super(props);
+    this.state = {
       color: props.color
     };
-    return _this;
   }
 
-  _createClass(PageB, [{
-    key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps(props) {
-      this.setState({
-        color: props.color
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
+  componentWillReceiveProps(props) {
+    this.setState({
+      color: props.color
+    });
+  }
 
-      var color = this.state.color;
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          color: color
-        }
-      }, /*#__PURE__*/_react["default"].createElement("h2", null, "pageB"), /*#__PURE__*/_react["default"].createElement("button", {
-        onClick: function onClick() {
-          _this2.setState({
-            color: 'red'
-          });
-        }
-      }, "\u7EA2\u8272"), /*#__PURE__*/_react["default"].createElement("button", {
-        onClick: function onClick() {
-          _this2.setState({
-            color: 'black'
-          });
-        }
-      }, "\u9ED1\u8272"));
-    }
-  }]);
+  render() {
+    const color = this.state.color;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      style: {
+        color
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "pageB"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      onClick: () => {
+        this.setState({
+          color: 'red'
+        });
+      }
+    }, "\u7EA2\u8272"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      onClick: () => {
+        this.setState({
+          color: 'black'
+        });
+      }
+    }, "\u9ED1\u8272"));
+  }
 
-  return PageB;
-}(_react["default"].Component);
+}
 
-exports.default = PageB;
+/***/ }),
+
+/***/ "./index.js":
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+/*! namespace exports */
+/*! exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./App.jsx");
+
+
+
+react_dom__WEBPACK_IMPORTED_MODULE_1___default().render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_App__WEBPACK_IMPORTED_MODULE_2__.default, null), document.getElementById('root'));
 
 /***/ }),
 
@@ -1859,7 +1751,8 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   !*** ./node_modules/react-dom/index.js ***!
   \*****************************************/
 /*! dynamic exports */
-/*! exports [maybe provided (runtime-defined)] [no usage info] -> ./node_modules/react/lib/ReactDOM.js */
+/*! export __esModule [maybe provided (runtime-defined)] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react/lib/ReactDOM.js .__esModule */
+/*! other exports [maybe provided (runtime-defined)] [no usage info] -> ./node_modules/react/lib/ReactDOM.js */
 /*! runtime requirements: module, __webpack_require__ */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -1887,36 +1780,6 @@ module.exports = __webpack_require__(/*! react/lib/ReactDOM */ "./node_modules/r
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 function _interopDefault(e){return e&&"object"==typeof e&&"default"in e?e.default:e}Object.defineProperty(exports, "__esModule", ({value:!0}));var React=_interopDefault(__webpack_require__(/*! react */ "./node_modules/react/react.js"));function AppContainer(e){return AppContainer.warnAboutHMRDisabled&&(AppContainer.warnAboutHMRDisabled=!0,console.error("React-Hot-Loader: misconfiguration detected, using production version in non-production environment."),console.error("React-Hot-Loader: Hot Module Replacement is not enabled.")),React.Children.only(e.children)}AppContainer.warnAboutHMRDisabled=!1;var hot=function e(){return e.shouldWrapWithAppContainer?function(e){return function(n){return React.createElement(AppContainer,null,React.createElement(e,n))}}:function(e){return e}};hot.shouldWrapWithAppContainer=!1;var areComponentsEqual=function(e,n){return e===n},setConfig=function(){},cold=function(e){return e},configureComponent=function(){};exports.AppContainer=AppContainer,exports.hot=hot,exports.areComponentsEqual=areComponentsEqual,exports.setConfig=setConfig,exports.cold=cold,exports.configureComponent=configureComponent;
-
-
-/***/ }),
-
-/***/ "./node_modules/react-hot-loader/index.js":
-/*!************************************************!*\
-  !*** ./node_modules/react-hot-loader/index.js ***!
-  \************************************************/
-/*! dynamic exports */
-/*! export AppContainer [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js .AppContainer */
-/*! export __esModule [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js .__esModule */
-/*! export areComponentsEqual [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js .areComponentsEqual */
-/*! export cold [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js .cold */
-/*! export configureComponent [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js .configureComponent */
-/*! export hot [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js .hot */
-/*! export setConfig [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js .setConfig */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: module, __webpack_require__ */
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-
-if (false) {} else if (false) {} else if (typeof window === 'undefined') {
-  // this is just server environment
-  module.exports = __webpack_require__(/*! ./dist/react-hot-loader.production.min.js */ "./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js");
-} else if (true) {
-  module.exports = __webpack_require__(/*! ./dist/react-hot-loader.production.min.js */ "./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js");
-  module.exports.AppContainer.warnAboutHMRDisabled = true;
-  module.exports.hot.shouldWrapWithAppContainer = true;
-} else { var jsFeaturesPresent, evalError, evalAllowed; }
 
 
 /***/ }),
@@ -21234,7 +21097,8 @@ module.exports = validateDOMNesting;
   !*** ./node_modules/react/react.js ***!
   \*************************************/
 /*! dynamic exports */
-/*! exports [maybe provided (runtime-defined)] [no usage info] -> ./node_modules/react/lib/React.js */
+/*! export __esModule [maybe provided (runtime-defined)] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react/lib/React.js .__esModule */
+/*! other exports [maybe provided (runtime-defined)] [no usage info] -> ./node_modules/react/lib/React.js */
 /*! runtime requirements: module, __webpack_require__ */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -21244,11 +21108,8 @@ module.exports = __webpack_require__(/*! ./lib/React */ "./node_modules/react/li
 
 
 /***/ })
+
 /******/ 	});
-// for(let key in __webpack_modules__) {
-//   __webpack_modules__[key] = ""
-// }
-// console.log(JSON.stringify(__webpack_modules__))
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
@@ -21277,34 +21138,65 @@ module.exports = __webpack_require__(/*! ./lib/React */ "./node_modules/react/li
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
-/******/ 		__webpack_require__.nmd = (module) => {
-/******/ 			module.paths = [];
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => module['default'] :
+/******/ 				() => module;
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/harmony module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.hmd = (module) => {
+/******/ 			module = Object.create(module);
 /******/ 			if (!module.children) module.children = [];
+/******/ 			Object.defineProperty(module, 'exports', {
+/******/ 				enumerable: true,
+/******/ 				set: () => {
+/******/ 					throw new Error('ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: ' + module.id);
+/******/ 				}
+/******/ 			});
 /******/ 			return module;
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /************************************************************************/
-(() => {
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: __webpack_require__ */
-
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/react.js"));
-
-var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
-
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "./App.jsx"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-_reactDom["default"].render( /*#__PURE__*/_react["default"].createElement(_App["default"], null), document.getElementById('root'));
-})();
-
+/******/ 	// startup
+/******/ 	// Load entry module
+/******/ 	__webpack_require__("./index.js");
+/******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;
