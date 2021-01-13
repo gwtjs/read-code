@@ -8,8 +8,8 @@ modules文件夹为react项目执行gulp任务之后得到的源代码。
 
 ## 执行
 
-首先使用npm 或 yarn 安装依赖
+使用 yarn 安装依赖
 
-使用yarn start运行demo
+使用 yarn start 运行demo
 
-使用yarn build生成bundle
+使用 yarn build 生成bundle
