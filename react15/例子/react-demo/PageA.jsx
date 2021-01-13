@@ -1,4 +1,4 @@
-import React from 'react'
+import React from './modules/React'
 
 export default class PageA extends React.Component{
     render () {

@@ -1,6 +1,7 @@
 var webpack = require('webpack')
 var path = require('path');
 
+const noDevServer = process.env.npm_package_config_noDevServer
 module.exports = {
     mode: 'development',
     entry: './index.js',
@@ -23,12 +24,13 @@ module.exports = {
           ]
     },
     resolve: { extensions: ["*", ".js", ".jsx"] },
-    devtool:false
-    // devServer: {
-    //     // contentBase: path.join(__dirname, "./"),
-    //     // port: 3000,
-    //     // publicPath: "http://localhost:3000/",
-    //     hotOnly: true
-    // },
-    // plugins: [new webpack.HotModuleReplacementPlugin()]
+    devtool:false,
+    ...(!noDevServer && {devServer: {
+        contentBase: path.join(__dirname, "./"),
+        port: 3000,
+        publicPath: "http://localhost:3000/",
+        hotOnly: true
+    },
+    plugins: [new webpack.HotModuleReplacementPlugin()]
+    })
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from './modules/React'
 
 export default class PageB extends React.Component{
     constructor(props) {

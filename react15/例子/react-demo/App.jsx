@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from './modules/React'
 import {hot} from "react-hot-loader";
 import PageA from './PageA'
 import PageB from './PageB'
@@ -24,4 +24,4 @@ class App extends React.Component{
     }
 }
 
-export default process.env.NODE_ENV === 'development' ? hot(module)(App) : App
+export default App
