@@ -49,6 +49,7 @@ var insertTreeBefore = createMicrosoftUnsafeLocalFunction(function (parentNode, 
   // appending children won't update the DOM. We need to ensure the fragment
   // is properly populated first, breaking out of our lazy approach for just
   // this level.
+  console.log('=============================insertTreeBefore=============================',parentNode, tree, referenceNode)
   if (tree.node.nodeType === 11) {
     insertTreeChildren(tree);
     parentNode.insertBefore(tree.node, referenceNode);

@@ -65,7 +65,7 @@ var ReactElement = function (type, key, ref, self, source, owner, props) {
     // Record the component responsible for creating this element.
     _owner: owner
   };
-  console.log(element)
+  console.log("=============================ReactElement=============================",element)
   return element;
 };
 

@@ -100,8 +100,9 @@ function mountComponentIntoNode(wrapperInstance, container, transaction, shouldR
     console.time(markerName);
   }
 
+  console.log(`=============================mountComponentIntoNode：before mount=============================`,{...wrapperInstance})
   var markup = ReactReconciler.mountComponent(wrapperInstance, transaction, null, ReactDOMContainerInfo(wrapperInstance, container), context);
-  console.log(`mountComponentIntoNode：`,markup)
+  console.log(`=============================mountComponentIntoNode：after mount=============================`,{...markup})
   if (markerName) {
     console.timeEnd(markerName);
   }
@@ -121,8 +122,10 @@ function batchedMountComponentIntoNode(componentInstance, container, shouldReuse
   var transaction = ReactUpdates.ReactReconcileTransaction.getPooled(
   /* useCreateElement */
   !shouldReuseMarkup && ReactDOMFeatureFlags.useCreateElement);
-  console.log(`batchedMountComponentIntoNode`, componentInstance)
+  console.log(`=============================batchedMountComponentIntoNode:transcation=============================`, {...transaction})
+  console.log(`=============================batchedMountComponentIntoNode:before perform=============================`, {...componentInstance})
   transaction.perform(mountComponentIntoNode, null, componentInstance, container, transaction, shouldReuseMarkup, context);
+  console.log(`=============================batchedMountComponentIntoNode:after perform=============================`, {...componentInstance})
   ReactUpdates.ReactReconcileTransaction.release(transaction);
 }
 
@@ -261,29 +264,26 @@ var ReactMount = {
    * @return {ReactComponent} nextComponent
    */
   _renderNewRootComponent: function (nextElement, container, shouldReuseMarkup, context) {
-    console.log(nextElement, container, shouldReuseMarkup, context)
-    // Various parts of our code (such as ReactCompositeComponent's
-    // _renderValidatedComponent) assume that calls to render aren't nested;
-    // verify that that's the case.
-    process.env.NODE_ENV !== 'production' ? warning(ReactCurrentOwner.current == null, '_renderNewRootComponent(): Render methods should be a pure function ' + 'of props and state; triggering nested component updates from ' + 'render is not allowed. If necessary, trigger nested updates in ' + 'componentDidUpdate. Check the render method of %s.', ReactCurrentOwner.current && ReactCurrentOwner.current.getName() || 'ReactCompositeComponent') : void 0;
-
-    !(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE || container.nodeType === DOCUMENT_FRAGMENT_NODE_TYPE)) ? process.env.NODE_ENV !== 'production' ? invariant(false, '_registerComponent(...): Target container is not a DOM element.') : invariant(false) : void 0;
-
+    console.log('=============================_renderNewRootComponent=============================',nextElement, container, shouldReuseMarkup, context)
+    
     ReactBrowserEventEmitter.ensureScrollValueMonitoring();
     var componentInstance = instantiateReactComponent(nextElement);
-    console.log(componentInstance)
     // The initial render is synchronous but any updates that happen during
     // rendering, in componentWillMount or componentDidMount, will be batched
     // according to the current batching strategy.
 
-    ReactUpdates.batchedUpdates(batchedMountComponentIntoNode, componentInstance, container, shouldReuseMarkup, context);
+    console.log('=============================ReactUpdates.batchedUpdates:before batched=============================',{...componentInstance})
+    ReactUpdates.batchedUpdates(
+      batchedMountComponentIntoNode, 
+      componentInstance, 
+      container, 
+      shouldReuseMarkup, 
+      context);
+    
+    console.log('=============================ReactUpdates.batchedUpdates:after batched=============================',{...componentInstance})
 
     var wrapperID = componentInstance._instance.rootID;
     instancesByReactRootID[wrapperID] = componentInstance;
-
-    if (process.env.NODE_ENV !== 'production') {
-      ReactInstrumentation.debugTool.onMountRootComponent(componentInstance);
-    }
 
     return componentInstance;
   },
@@ -307,18 +307,13 @@ var ReactMount = {
   },
 
   _renderSubtreeIntoContainer: function (parentComponent, nextElement, container, callback) {
-    console.log(parentComponent, nextElement, container, callback)
+    console.log('=============================_renderSubtreeIntoContainer:params=============================',parentComponent, nextElement, container, callback)
     ReactUpdateQueue.validateCallback(callback, 'ReactDOM.render');
-    !ReactElement.isValidElement(nextElement) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactDOM.render(): Invalid component element.%s', typeof nextElement === 'string' ? ' Instead of passing a string like \'div\', pass ' + 'React.createElement(\'div\') or <div />.' : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' :
-    // Check if it quacks like an element
-    nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : invariant(false) : void 0;
-
-    process.env.NODE_ENV !== 'production' ? warning(!container || !container.tagName || container.tagName.toUpperCase() !== 'BODY', 'render(): Rendering components directly into document.body is ' + 'discouraged, since its children are often manipulated by third-party ' + 'scripts and browser extensions. This may lead to subtle ' + 'reconciliation issues. Try rendering into a container element created ' + 'for your app.') : void 0;
-
+    
     var nextWrappedElement = ReactElement(TopLevelWrapper, null, null, null, null, null, nextElement);
-
+    
     var prevComponent = getTopLevelWrapperInContainer(container);
-
+    
     if (prevComponent) {
       var prevWrappedElement = prevComponent._currentElement;
       var prevElement = prevWrappedElement.props;
@@ -333,28 +328,20 @@ var ReactMount = {
         ReactMount.unmountComponentAtNode(container);
       }
     }
-
+    
     var reactRootElement = getReactRootElementInContainer(container);
     var containerHasReactMarkup = reactRootElement && !!internalGetID(reactRootElement);
     var containerHasNonRootReactChild = hasNonRootReactChild(container);
-
-    if (process.env.NODE_ENV !== 'production') {
-      process.env.NODE_ENV !== 'production' ? warning(!containerHasNonRootReactChild, 'render(...): Replacing React-rendered children with a new root ' + 'component. If you intended to update the children of this node, ' + 'you should instead have the existing children update their state ' + 'and render the new components instead of calling ReactDOM.render.') : void 0;
-
-      if (!containerHasReactMarkup || reactRootElement.nextSibling) {
-        var rootElementSibling = reactRootElement;
-        while (rootElementSibling) {
-          if (internalGetID(rootElementSibling)) {
-            process.env.NODE_ENV !== 'production' ? warning(false, 'render(): Target node has markup rendered by React, but there ' + 'are unrelated nodes as well. This is most commonly caused by ' + 'white-space inserted around server-rendered markup.') : void 0;
-            break;
-          }
-          rootElementSibling = rootElementSibling.nextSibling;
-        }
-      }
-    }
-
+    
     var shouldReuseMarkup = containerHasReactMarkup && !prevComponent && !containerHasNonRootReactChild;
-    var component = ReactMount._renderNewRootComponent(nextWrappedElement, container, shouldReuseMarkup, parentComponent != null ? parentComponent._reactInternalInstance._processChildContext(parentComponent._reactInternalInstance._context) : emptyObject)._renderedComponent.getPublicInstance();
+
+    console.log('=============================_renderSubtreeIntoContainer:vars=============================',prevComponent, reactRootElement, containerHasReactMarkup, containerHasNonRootReactChild, shouldReuseMarkup)
+
+    var component = ReactMount._renderNewRootComponent(nextWrappedElement, container, shouldReuseMarkup, 
+      parentComponent != null ? 
+      parentComponent._reactInternalInstance._processChildContext(parentComponent._reactInternalInstance._context) 
+      : 
+      emptyObject)._renderedComponent.getPublicInstance();
     if (callback) {
       callback.call(component);
     }
@@ -415,7 +402,7 @@ var ReactMount = {
 
   _mountImageIntoNode: function (markup, container, instance, shouldReuseMarkup, transaction) {
     !(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE || container.nodeType === DOCUMENT_FRAGMENT_NODE_TYPE)) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'mountComponentIntoNode(...): Target container is not valid.') : invariant(false) : void 0;
-
+    console.log('=============================_mountImageIntoNode=============================',markup, container, instance, shouldReuseMarkup, transaction)
     if (shouldReuseMarkup) {
       var rootElement = getReactRootElementInContainer(container);
       if (ReactMarkupChecksum.canReuseMarkup(markup, rootElement)) {

@@ -104,7 +104,7 @@ function instantiateReactComponent(node) {
       Object.preventExtensions(instance);
     }
   }
-
+  console.log('=============================instantiateReactComponent=============================',{...instance})
   return instance;
 }
 

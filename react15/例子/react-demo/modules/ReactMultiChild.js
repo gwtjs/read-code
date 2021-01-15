@@ -194,6 +194,7 @@ var ReactMultiChild = {
      */
     mountChildren: function (nestedChildren, transaction, context) {
       var children = this._reconcilerInstantiateChildren(nestedChildren, transaction, context);
+      console.log('=============================ReactMultiChild.mountChildren =============================',{...children})
       this._renderedChildren = children;
       var mountImages = [];
       var index = 0;

@@ -461,7 +461,9 @@ ReactDOMComponent.Mixin = {
         DOMPropertyOperations.setAttributeForRoot(el);
       }
       this._updateDOMProperties(null, props, transaction);
+      console.log('=============================ReactDOMCompoent.mountComponent: el =============================',el)
       var lazyTree = DOMLazyTree(el);
+      console.log('=============================ReactDOMCompoent.mountComponent: lazyTree =============================',lazyTree)
       this._createInitialChildren(transaction, props, context, lazyTree);
       mountImage = lazyTree;
     } else {
@@ -601,6 +603,7 @@ ReactDOMComponent.Mixin = {
   },
 
   _createInitialChildren: function (transaction, props, context, lazyTree) {
+    console.log('=============================ReactDOMCompoent._createInitialChildren: params =============================',props,context,{...lazyTree})
     // Intentional use of != to avoid catching zero/false.
     var innerHTML = props.dangerouslySetInnerHTML;
     if (innerHTML != null) {
@@ -614,7 +617,9 @@ ReactDOMComponent.Mixin = {
         // TODO: Validate that text is allowed as a child of this node
         DOMLazyTree.queueText(lazyTree, contentToUse);
       } else if (childrenToUse != null) {
+        console.log('=============================ReactDOMCompoent._createInitialChildren: before mountChildren  =============================',{...childrenToUse})
         var mountImages = this.mountChildren(childrenToUse, transaction, context);
+        console.log('=============================ReactDOMCompoent._createInitialChildren: after mountChildren  =============================',{...mountImages})
         for (var i = 0; i < mountImages.length; i++) {
           DOMLazyTree.queueChild(lazyTree, mountImages[i]);
         }

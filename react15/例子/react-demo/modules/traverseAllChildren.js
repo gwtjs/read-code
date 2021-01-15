@@ -87,6 +87,7 @@ function wrapUserProvidedKey(key) {
  * @return {!number} The number of children in this subtree.
  */
 function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
+  console.log('=============================traverseAllChildrenImpl:params=============================',children, nameSoFar, callback, {...traverseContext})
   var type = typeof children;
 
   if (type === 'undefined' || type === 'boolean') {

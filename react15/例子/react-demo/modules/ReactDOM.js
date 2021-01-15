@@ -30,6 +30,13 @@ ReactDefaultInjection.inject();
 
 var render = ReactPerf.measure('React', 'render', ReactMount.render);
 
+// ReactDOM.render({
+//   $$typeof: Symbol('react.element'),
+//   key: null,
+//   props: {},
+//   ref: null,
+//   type: App,
+//   _owner: null}, div#root)
 var React = {
   findDOMNode: findDOMNode,
   render: render,

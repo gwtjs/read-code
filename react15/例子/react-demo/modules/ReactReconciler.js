@@ -36,7 +36,10 @@ var ReactReconciler = {
    * @internal
    */
   mountComponent: function (internalInstance, transaction, nativeParent, nativeContainerInfo, context) {
+    console.log('=============================ReactReconciler.mountComponent:params=============================',internalInstance, transaction, nativeParent, nativeContainerInfo, context)
+    console.log('=============================ReactReconciler.mountComponent:before mount=============================',{...internalInstance})
     var markup = internalInstance.mountComponent(transaction, nativeParent, nativeContainerInfo, context);
+    console.log('=============================ReactReconciler.mountComponent:after mount=============================',{...markup})
     if (internalInstance._currentElement && internalInstance._currentElement.ref != null) {
       transaction.getReactMountReady().enqueue(attachRefs, internalInstance);
     }

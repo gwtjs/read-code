@@ -6287,8 +6287,6 @@ var ReactCompositeComponentMixin = {
       }
     }
 
-    console.log(Object.keys(inst).join());
-
     if (true) {
       // This will throw later in _renderValidatedComponent, but add an early
       // warning now to help debugging
@@ -6341,8 +6339,6 @@ var ReactCompositeComponentMixin = {
     } else {
       markup = this.performInitialMount(renderedElement, nativeParent, nativeContainerInfo, transaction, context);
     }
-
-    console.log(markup);
 
     if (inst.componentDidMount) {
       transaction.getReactMountReady().enqueue(inst.componentDidMount, inst);
@@ -6397,7 +6393,6 @@ var ReactCompositeComponentMixin = {
 
     this._renderedNodeType = ReactNodeTypes.getType(renderedElement);
     this._renderedComponent = this._instantiateReactComponent(renderedElement);
-    console.log(renderedElement, this._renderedNodeType, this._renderedComponent);
     var markup = ReactReconciler.mountComponent(this._renderedComponent, transaction, nativeParent, nativeContainerInfo, this._processChildContext(context));
     return markup;
   },
@@ -6989,7 +6984,14 @@ var renderSubtreeIntoContainer = __webpack_require__(/*! ./renderSubtreeIntoCont
 var warning = __webpack_require__(/*! fbjs/lib/warning */ "./node_modules/fbjs/lib/warning.js");
 
 ReactDefaultInjection.inject();
-var render = ReactPerf.measure('React', 'render', ReactMount.render);
+var render = ReactPerf.measure('React', 'render', ReactMount.render); // ReactDOM.render({
+//   $$typeof: Symbol('react.element'),
+//   key: null,
+//   props: {},
+//   ref: null,
+//   type: App,
+//   _owner: null}, div#root)
+
 var React = {
   findDOMNode: findDOMNode,
   render: render,
@@ -7024,39 +7026,6 @@ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVT
     Mount: ReactMount,
     Reconciler: ReactReconciler
   });
-}
-
-if (true) {
-  var ExecutionEnvironment = __webpack_require__(/*! fbjs/lib/ExecutionEnvironment */ "./node_modules/fbjs/lib/ExecutionEnvironment.js");
-
-  if (ExecutionEnvironment.canUseDOM && window.top === window.self) {
-    // First check if devtools is not installed
-    if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined') {
-      // If we're in Chrome or Firefox, provide a download link if not installed.
-      if (navigator.userAgent.indexOf('Chrome') > -1 && navigator.userAgent.indexOf('Edge') === -1 || navigator.userAgent.indexOf('Firefox') > -1) {
-        // Firefox does not have the issue with devtools loaded over file://
-        var showFileUrlMessage = window.location.protocol.indexOf('http') === -1 && navigator.userAgent.indexOf('Firefox') === -1;
-        console.debug('Download the React DevTools ' + (showFileUrlMessage ? 'and use an HTTP server (instead of a file: URL) ' : '') + 'for a better development experience: ' + 'https://fb.me/react-devtools');
-      }
-    }
-
-    var testFunc = function testFn() {};
-
-     true ? warning((testFunc.name || testFunc.toString()).indexOf('testFn') !== -1, 'It looks like you\'re using a minified copy of the development build ' + 'of React. When deploying React apps to production, make sure to use ' + 'the production build which skips development warnings and is faster. ' + 'See https://fb.me/react-minification for more details.') : 0; // If we're in IE8, check to see if we are in compatibility mode and provide
-    // information on preventing compatibility mode
-
-    var ieCompatibilityMode = document.documentMode && document.documentMode < 8;
-     true ? warning(!ieCompatibilityMode, 'Internet Explorer is running in compatibility mode; please add the ' + 'following tag to your HTML to prevent this from happening: ' + '<meta http-equiv="X-UA-Compatible" content="IE=edge" />') : 0;
-    var expectedFeatures = [// shims
-    Array.isArray, Array.prototype.every, Array.prototype.forEach, Array.prototype.indexOf, Array.prototype.map, Date.now, Function.prototype.bind, Object.keys, String.prototype.split, String.prototype.trim];
-
-    for (var i = 0; i < expectedFeatures.length; i++) {
-      if (!expectedFeatures[i]) {
-         true ? warning(false, 'One or more ES5 shims expected by React are not available: ' + 'https://fb.me/react-warning-polyfills') : 0;
-        break;
-      }
-    }
-  }
 }
 
 module.exports = React;
@@ -11057,51 +11026,7 @@ var ReactElement = function ReactElement(type, key, ref, self, source, owner, pr
     // Record the component responsible for creating this element.
     _owner: owner
   };
-
-  if (true) {
-    // The validation flag is currently mutative. We put it on
-    // an external backing store so that we can freeze the whole object.
-    // This can be replaced with a WeakMap once they are implemented in
-    // commonly used development environments.
-    element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
-    // the validation flag non-enumerable (where possible, which should
-    // include every environment we run tests in), so the test framework
-    // ignores it.
-
-    if (canDefineProperty) {
-      Object.defineProperty(element._store, 'validated', {
-        configurable: false,
-        enumerable: false,
-        writable: true,
-        value: false
-      }); // self and source are DEV only properties.
-
-      Object.defineProperty(element, '_self', {
-        configurable: false,
-        enumerable: false,
-        writable: false,
-        value: self
-      }); // Two elements created in two different places should be considered
-      // equal for testing purposes and therefore we hide it from enumeration.
-
-      Object.defineProperty(element, '_source', {
-        configurable: false,
-        enumerable: false,
-        writable: false,
-        value: source
-      });
-    } else {
-      element._store.validated = false;
-      element._self = self;
-      element._source = source;
-    }
-
-    if (Object.freeze) {
-      Object.freeze(element.props);
-      Object.freeze(element);
-    }
-  }
-
+  console.log("ReactElement:", element);
   return element;
 };
 
@@ -11153,40 +11078,6 @@ ReactElement.createElement = function (type, config, children) {
     for (propName in defaultProps) {
       if (props[propName] === undefined) {
         props[propName] = defaultProps[propName];
-      }
-    }
-  }
-
-  if (true) {
-    // Create dummy `key` and `ref` property to `props` to warn users
-    // against its use
-    if (typeof props.$$typeof === 'undefined' || props.$$typeof !== REACT_ELEMENT_TYPE) {
-      if (!props.hasOwnProperty('key')) {
-        Object.defineProperty(props, 'key', {
-          get: function get() {
-            if (!specialPropKeyWarningShown) {
-              specialPropKeyWarningShown = true;
-               true ? warning(false, '%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', typeof type === 'function' && 'displayName' in type ? type.displayName : 'Element') : 0;
-            }
-
-            return undefined;
-          },
-          configurable: true
-        });
-      }
-
-      if (!props.hasOwnProperty('ref')) {
-        Object.defineProperty(props, 'ref', {
-          get: function get() {
-            if (!specialPropRefWarningShown) {
-              specialPropRefWarningShown = true;
-               true ? warning(false, '%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', typeof type === 'function' && 'displayName' in type ? type.displayName : 'Element') : 0;
-            }
-
-            return undefined;
-          },
-          configurable: true
-        });
       }
     }
   }
@@ -12476,7 +12367,7 @@ function batchedMountComponentIntoNode(componentInstance, container, shouldReuse
   var transaction = ReactUpdates.ReactReconcileTransaction.getPooled(
   /* useCreateElement */
   !shouldReuseMarkup && ReactDOMFeatureFlags.useCreateElement);
-  console.log("batchedMountComponentIntoNode", componentInstance);
+  console.log("batchedMountComponentIntoNode:", componentInstance);
   transaction.perform(mountComponentIntoNode, null, componentInstance, container, transaction, shouldReuseMarkup, context);
   ReactUpdates.ReactReconcileTransaction.release(transaction);
 }
@@ -12624,15 +12515,14 @@ var ReactMount = {
    * @return {ReactComponent} nextComponent
    */
   _renderNewRootComponent: function _renderNewRootComponent(nextElement, container, shouldReuseMarkup, context) {
-    console.log(nextElement, container, shouldReuseMarkup, context); // Various parts of our code (such as ReactCompositeComponent's
+    console.log('_renderNewRootComponent:', nextElement, container, shouldReuseMarkup, context); // Various parts of our code (such as ReactCompositeComponent's
     // _renderValidatedComponent) assume that calls to render aren't nested;
     // verify that that's the case.
 
      true ? warning(ReactCurrentOwner.current == null, '_renderNewRootComponent(): Render methods should be a pure function ' + 'of props and state; triggering nested component updates from ' + 'render is not allowed. If necessary, trigger nested updates in ' + 'componentDidUpdate. Check the render method of %s.', ReactCurrentOwner.current && ReactCurrentOwner.current.getName() || 'ReactCompositeComponent') : 0;
     !(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE || container.nodeType === DOCUMENT_FRAGMENT_NODE_TYPE)) ?  true ? invariant(false, '_registerComponent(...): Target container is not a DOM element.') : 0 : void 0;
     ReactBrowserEventEmitter.ensureScrollValueMonitoring();
-    var componentInstance = instantiateReactComponent(nextElement);
-    console.log(componentInstance); // The initial render is synchronous but any updates that happen during
+    var componentInstance = instantiateReactComponent(nextElement); // The initial render is synchronous but any updates that happen during
     // rendering, in componentWillMount or componentDidMount, will be batched
     // according to the current batching strategy.
 
@@ -12665,11 +12555,8 @@ var ReactMount = {
     return ReactMount._renderSubtreeIntoContainer(parentComponent, nextElement, container, callback);
   },
   _renderSubtreeIntoContainer: function _renderSubtreeIntoContainer(parentComponent, nextElement, container, callback) {
-    console.log(parentComponent, nextElement, container, callback);
+    console.log('_renderSubtreeIntoContainer:params:', parentComponent, nextElement, container, callback);
     ReactUpdateQueue.validateCallback(callback, 'ReactDOM.render');
-    !ReactElement.isValidElement(nextElement) ?  true ? invariant(false, 'ReactDOM.render(): Invalid component element.%s', typeof nextElement === 'string' ? ' Instead of passing a string like \'div\', pass ' + 'React.createElement(\'div\') or <div />.' : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' : // Check if it quacks like an element
-    nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : 0 : void 0;
-     true ? warning(!container || !container.tagName || container.tagName.toUpperCase() !== 'BODY', 'render(): Rendering components directly into document.body is ' + 'discouraged, since its children are often manipulated by third-party ' + 'scripts and browser extensions. This may lead to subtle ' + 'reconciliation issues. Try rendering into a container element created ' + 'for your app.') : 0;
     var nextWrappedElement = ReactElement(TopLevelWrapper, null, null, null, null, null, nextElement);
     var prevComponent = getTopLevelWrapperInContainer(container);
 
@@ -12695,25 +12582,8 @@ var ReactMount = {
     var reactRootElement = getReactRootElementInContainer(container);
     var containerHasReactMarkup = reactRootElement && !!internalGetID(reactRootElement);
     var containerHasNonRootReactChild = hasNonRootReactChild(container);
-
-    if (true) {
-       true ? warning(!containerHasNonRootReactChild, 'render(...): Replacing React-rendered children with a new root ' + 'component. If you intended to update the children of this node, ' + 'you should instead have the existing children update their state ' + 'and render the new components instead of calling ReactDOM.render.') : 0;
-
-      if (!containerHasReactMarkup || reactRootElement.nextSibling) {
-        var rootElementSibling = reactRootElement;
-
-        while (rootElementSibling) {
-          if (internalGetID(rootElementSibling)) {
-             true ? warning(false, 'render(): Target node has markup rendered by React, but there ' + 'are unrelated nodes as well. This is most commonly caused by ' + 'white-space inserted around server-rendered markup.') : 0;
-            break;
-          }
-
-          rootElementSibling = rootElementSibling.nextSibling;
-        }
-      }
-    }
-
     var shouldReuseMarkup = containerHasReactMarkup && !prevComponent && !containerHasNonRootReactChild;
+    console.log('_renderSubtreeIntoContainer:vars:', prevComponent, reactRootElement, containerHasReactMarkup, containerHasNonRootReactChild, shouldReuseMarkup);
 
     var component = ReactMount._renderNewRootComponent(nextWrappedElement, container, shouldReuseMarkup, parentComponent != null ? parentComponent._reactInternalInstance._processChildContext(parentComponent._reactInternalInstance._context) : emptyObject)._renderedComponent.getPublicInstance();
 

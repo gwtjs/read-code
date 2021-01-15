@@ -138,108 +138,61 @@ var ReactCompositeComponentMixin = {
    * @internal
    */
   mountComponent: function (transaction, nativeParent, nativeContainerInfo, context) {
-    console.log(`ReactCompositeComponent.mountComponent：`,nativeParent, nativeContainerInfo, context)
     this._context = context;
     this._mountOrder = nextMountID++;
     this._nativeParent = nativeParent;
     this._nativeContainerInfo = nativeContainerInfo;
-
+    
     var publicProps = this._processProps(this._currentElement.props);
     var publicContext = this._processContext(context);
-
+    
     var Component = this._currentElement.type;
-
+    
     // Initialize the public class
     var inst;
     var renderedElement;
-
+    
     if (Component.prototype && Component.prototype.isReactComponent) {
-      if (process.env.NODE_ENV !== 'production') {
-        ReactCurrentOwner.current = this;
-        try {
-          inst = new Component(publicProps, publicContext, ReactUpdateQueue);
-        } finally {
-          ReactCurrentOwner.current = null;
-        }
-      } else {
-        inst = new Component(publicProps, publicContext, ReactUpdateQueue);
-      }
+      inst = new Component(publicProps, publicContext, ReactUpdateQueue);
     } else {
-      if (process.env.NODE_ENV !== 'production') {
-        ReactCurrentOwner.current = this;
-        try {
-          inst = Component(publicProps, publicContext, ReactUpdateQueue);
-        } finally {
-          ReactCurrentOwner.current = null;
-        }
-      } else {
-        inst = Component(publicProps, publicContext, ReactUpdateQueue);
-      }
+      inst = Component(publicProps, publicContext, ReactUpdateQueue);
       if (inst == null || inst.render == null) {
         renderedElement = inst;
         warnIfInvalidElement(Component, renderedElement);
-        !(inst === null || inst === false || ReactElement.isValidElement(inst)) ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s(...): A valid React element (or null) must be returned. You may have ' + 'returned undefined, an array or some other invalid object.', Component.displayName || Component.name || 'Component') : invariant(false) : void 0;
         inst = new StatelessComponent(Component);
       }
     }
-    console.log(Object.keys(inst).join())
-
-    if (process.env.NODE_ENV !== 'production') {
-      // This will throw later in _renderValidatedComponent, but add an early
-      // warning now to help debugging
-      if (inst.render == null) {
-        process.env.NODE_ENV !== 'production' ? warning(false, '%s(...): No `render` method found on the returned component ' + 'instance: you may have forgotten to define `render`.', Component.displayName || Component.name || 'Component') : void 0;
-      }
-
-      var propsMutated = inst.props !== publicProps;
-      var componentName = Component.displayName || Component.name || 'Component';
-
-      process.env.NODE_ENV !== 'production' ? warning(inst.props === undefined || !propsMutated, '%s(...): When calling super() in `%s`, make sure to pass ' + 'up the same props that your component\'s constructor was passed.', componentName, componentName) : void 0;
-    }
-
+    
     // These should be set up in the constructor, but as a convenience for
     // simpler class abstractions, we set them up after the fact.
     inst.props = publicProps;
     inst.context = publicContext;
     inst.refs = emptyObject;
     inst.updater = ReactUpdateQueue;
-
+    
     this._instance = inst;
-
+    
     // Store a reference from the instance back to the internal representation
     ReactInstanceMap.set(inst, this);
     
-    if (process.env.NODE_ENV !== 'production') {
-      // Since plain JS classes are defined without any special initialization
-      // logic, we can not catch common errors early. Therefore, we have to
-      // catch them here, at initialization time, instead.
-      process.env.NODE_ENV !== 'production' ? warning(!inst.getInitialState || inst.getInitialState.isReactClassApproved, 'getInitialState was defined on %s, a plain JavaScript class. ' + 'This is only supported for classes created using React.createClass. ' + 'Did you mean to define a state property instead?', this.getName() || 'a component') : void 0;
-      process.env.NODE_ENV !== 'production' ? warning(!inst.getDefaultProps || inst.getDefaultProps.isReactClassApproved, 'getDefaultProps was defined on %s, a plain JavaScript class. ' + 'This is only supported for classes created using React.createClass. ' + 'Use a static property to define defaultProps instead.', this.getName() || 'a component') : void 0;
-      process.env.NODE_ENV !== 'production' ? warning(!inst.propTypes, 'propTypes was defined as an instance property on %s. Use a static ' + 'property to define propTypes instead.', this.getName() || 'a component') : void 0;
-      process.env.NODE_ENV !== 'production' ? warning(!inst.contextTypes, 'contextTypes was defined as an instance property on %s. Use a ' + 'static property to define contextTypes instead.', this.getName() || 'a component') : void 0;
-      process.env.NODE_ENV !== 'production' ? warning(typeof inst.componentShouldUpdate !== 'function', '%s has a method called ' + 'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' + 'The name is phrased as a question because the function is ' + 'expected to return a value.', this.getName() || 'A component') : void 0;
-      process.env.NODE_ENV !== 'production' ? warning(typeof inst.componentDidUnmount !== 'function', '%s has a method called ' + 'componentDidUnmount(). But there is no such lifecycle method. ' + 'Did you mean componentWillUnmount()?', this.getName() || 'A component') : void 0;
-      process.env.NODE_ENV !== 'production' ? warning(typeof inst.componentWillRecieveProps !== 'function', '%s has a method called ' + 'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?', this.getName() || 'A component') : void 0;
-    }
-
     var initialState = inst.state;
     if (initialState === undefined) {
       inst.state = initialState = null;
     }
-    !(typeof initialState === 'object' && !Array.isArray(initialState)) ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.state: must be set to an object or null', this.getName() || 'ReactCompositeComponent') : invariant(false) : void 0;
-
+    
     this._pendingStateQueue = null;
     this._pendingReplaceState = false;
     this._pendingForceUpdate = false;
-
+    
+    console.log(`=============================ReactCompositeComponent.mountComponent=============================`,{...this})
     var markup;
     if (inst.unstable_handleError) {
       markup = this.performInitialMountWithErrorHandling(renderedElement, nativeParent, nativeContainerInfo, transaction, context);
     } else {
       markup = this.performInitialMount(renderedElement, nativeParent, nativeContainerInfo, transaction, context);
     }
-    console.log(markup)
-
+    
+    console.log(`=============================ReactCompositeComponent.mountComponent：before componentDidMount=============================`,{...markup})
     if (inst.componentDidMount) {
       transaction.getReactMountReady().enqueue(inst.componentDidMount, inst);
     }
@@ -272,6 +225,7 @@ var ReactCompositeComponentMixin = {
   },
 
   performInitialMount: function (renderedElement, nativeParent, nativeContainerInfo, transaction, context) {
+    console.log('=============================ReactCompositeComponent.performInitialMount:params=============================',renderedElement, nativeParent, nativeContainerInfo, transaction, context)
     var inst = this._instance;
     if (inst.componentWillMount) {
       inst.componentWillMount();
@@ -281,16 +235,17 @@ var ReactCompositeComponentMixin = {
         inst.state = this._processPendingState(inst.props, inst.context);
       }
     }
-
+    
+    console.log('=============================ReactCompositeComponent.performInitialMount:before render=============================',{...inst})
     // If not a stateless component, we now render
     if (renderedElement === undefined) {
       renderedElement = this._renderValidatedComponent();
     }
+    console.log('=============================ReactCompositeComponent.performInitialMount:after render=============================',{...renderedElement})
     
     this._renderedNodeType = ReactNodeTypes.getType(renderedElement);
     this._renderedComponent = this._instantiateReactComponent(renderedElement);
     
-    console.log(renderedElement,this._renderedNodeType,this._renderedComponent)
     var markup = ReactReconciler.mountComponent(this._renderedComponent, transaction, nativeParent, nativeContainerInfo, this._processChildContext(context));
 
     return markup;
@@ -680,7 +635,9 @@ var ReactCompositeComponentMixin = {
    */
   _renderValidatedComponentWithoutOwnerOrContext: function () {
     var inst = this._instance;
+    console.log('=============================ReactCompositeComponent._renderValidatedComponentWithoutOwnerOrContext:inst=============================',{...inst})
     var renderedComponent = inst.render();
+    console.log('=============================ReactCompositeComponent._renderValidatedComponentWithoutOwnerOrContext:renderedComponent=============================',{...renderedComponent})
     if (process.env.NODE_ENV !== 'production') {
       // We allow auto-mocks to proceed as if they're returning null.
       if (renderedComponent === undefined && inst.render._isMockFunction) {
