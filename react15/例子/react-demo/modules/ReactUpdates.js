@@ -116,7 +116,7 @@ function runBatchedUpdates(transaction) {
   // always -- see shouldComponentUpdate()) will reconcile children, reconcile
   // them before their children by sorting the array.
   dirtyComponents.sort(mountOrderComparator);
-
+  
   for (var i = 0; i < len; i++) {
     // If a component is unmounted before pending changes apply, it will still
     // be here, but we assume that it has cleared its _pendingCallbacks and
@@ -159,6 +159,7 @@ var flushBatchedUpdates = function () {
   // array and perform any updates enqueued by mount-ready handlers (i.e.,
   // componentDidUpdate) but we need to check here too in order to catch
   // updates enqueued by setState callbacks and asap calls.
+  console.log('=============================flushBatchedUpdates:dirtyComponents.length=============================',dirtyComponents.length)
   while (dirtyComponents.length || asapEnqueued) {
     if (dirtyComponents.length) {
       var transaction = ReactUpdatesFlushTransaction.getPooled();
@@ -194,7 +195,7 @@ function enqueueUpdate(component) {
     batchingStrategy.batchedUpdates(enqueueUpdate, component);
     return;
   }
-
+console.log(component)
   dirtyComponents.push(component);
 }
 

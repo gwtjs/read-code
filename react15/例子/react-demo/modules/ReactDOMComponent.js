@@ -807,6 +807,7 @@ ReactDOMComponent.Mixin = {
    * @param {object} context
    */
   _updateDOMChildren: function (lastProps, nextProps, transaction, context) {
+    console.log('_updateDOMChildren:',lastProps,nextProps)
     var lastContent = CONTENT_TYPES[typeof lastProps.children] ? lastProps.children : null;
     var nextContent = CONTENT_TYPES[typeof nextProps.children] ? nextProps.children : null;
 

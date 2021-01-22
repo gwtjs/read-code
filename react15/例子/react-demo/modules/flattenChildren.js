@@ -41,7 +41,9 @@ function flattenChildren(children) {
     return children;
   }
   var result = {};
+  console.log('flattenChildren:',children)
   traverseAllChildren(children, flattenSingleChildIntoContext, result);
+  console.log('flattenChildren:',{...result})
   return result;
 }
 

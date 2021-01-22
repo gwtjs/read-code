@@ -267,6 +267,7 @@ var ReactMultiChild = {
      * @protected
      */
     _updateChildren: function (nextNestedChildrenElements, transaction, context) {
+      console.log('_updateChildren:',nextNestedChildrenElements)
       var prevChildren = this._renderedChildren;
       var removedNodes = {};
       var nextChildren = this._reconcilerUpdateChildren(prevChildren, nextNestedChildrenElements, removedNodes, transaction, context);

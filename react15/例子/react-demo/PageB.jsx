@@ -4,13 +4,19 @@ export default class PageB extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            color: props.color
+            color: ''
         }
     }
-    componentWillReceiveProps(props) {
-      this.setState({
-        color: props.color
-    })
+    // componentWillReceiveProps(props) {
+    //   this.setState({
+    //     color: props.color
+    // })
+    // }
+    componentWillUpdate() {
+        console.log('componentWillUpdate')
+    }
+    componentDidUpdate() {
+        console.log('componentDidUpdate')
     }
     render () {
         const color = this.state.color
