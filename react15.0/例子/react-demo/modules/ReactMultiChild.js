@@ -271,6 +271,7 @@ var ReactMultiChild = {
       var prevChildren = this._renderedChildren;
       var removedNodes = {};
       var nextChildren = this._reconcilerUpdateChildren(prevChildren, nextNestedChildrenElements, removedNodes, transaction, context);
+      console.log('_updateChildren:',{...prevChildren},nextChildren)
       if (!nextChildren && !prevChildren) {
         return;
       }
